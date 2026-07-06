@@ -1,0 +1,81 @@
+# ------------------------------
+# Python
+# ------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# PyTorch
+*.pt
+*.pth
+*.ckpt
+
+# Model checkpoints
+checkpoints/
+models/
+
+# Dataset
+data/raw/
+data/processed/
+
+# Results
+results/
+
+# Hugging Face cache
+.cache/
+huggingface/
+
+# TensorBoard
+runs/
+
+# MLflow
+mlruns/
+
+# Logs
+*.log
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Temporary
+*.tmp
+*.swp
+
+# pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Environment variables
+.env
+
+# Build
+build/
+dist/
+*.egg-info/
