@@ -207,9 +207,11 @@ ultrasound-ai/
 
 ```
 
-## ENV
-```
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
+## Future Improvements
+
+This project focuses on building an end-to-end deep learning pipeline for thyroid ultrasound classification within a short development timeline. Several enhancements could further improve its usability and research value:
+
+* **Improved Grad-CAM visualization:** Blend the heatmap onto the original full-resolution image with adjustable transparency. This would make it easier to localize the highlighted regions while preserving anatomical context.
+* **Nodule localization:** Integrate an object detection or segmentation model (e.g., YOLO or U-Net) to identify the thyroid nodule before classification, removing the reliance on lesion-centered crops.
+* **Threshold optimization:** Tune the decision threshold to prioritize sensitivity (recall) for screening-oriented applications, reducing missed malignant cases.
+* **Model comparison:** Benchmark multiple architectures (e.g., EfficientNet, ConvNeXt, Vision Transformer) to evaluate the trade-offs between accuracy, inference speed, and computational cost.
