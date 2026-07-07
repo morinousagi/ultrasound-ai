@@ -134,10 +134,11 @@ model = timm.create_model(
 
 model.to(DEVICE)
 
+# crossentropyloss performs logit normalization internally, no need softmax before loss fn
 criterion = nn.CrossEntropyLoss(weight=class_weights)
 
 optimizer = AdamW(
-    model.parameters(),    # model.classifier.parameters() for freezing
+    model.parameters(),    # model.classifier.parameters() if freezing
     lr=config["training"]["learning_rate"],
 )
 

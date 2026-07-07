@@ -1,82 +1,96 @@
-# ------------------------------
+# ==========================================================
 # Python
-# ------------------------------
+# ==========================================================
+
 __pycache__/
 *.py[cod]
-*$py.class
-
-# C extensions
 *.so
 
-# Virtual Environment
+# ==========================================================
+# Virtual environments
+# ==========================================================
+
 .venv/
 venv/
 env/
 
+# ==========================================================
 # VS Code
+# ==========================================================
+
 .vscode/
 
+# ==========================================================
 # Jupyter
+# ==========================================================
+
 .ipynb_checkpoints/
-*.ipynb
 
-# PyTorch
-*.pt
-*.pth
-*.ckpt
+# ==========================================================
+# Python packaging
+# ==========================================================
 
-# Model checkpoints
-checkpoints/
-models/
-
-# Dataset
-data/raw/
-data/processed/
-data/
-
-# Results
-results/
-
-# Hugging Face cache
-.cache/
-huggingface/
-
-# TensorBoard
-runs/
-
-# MLflow
-mlruns/
-
-# Logs
-*.log
-
-# macOS
-.DS_Store
-
-# Windows
-Thumbs.db
-
-# Temporary
-*.tmp
-*.swp
-
-# pytest
-.pytest_cache/
-
-# mypy
-.mypy_cache/
-
-# Ruff
-.ruff_cache/
-
-# Coverage
-.coverage
-htmlcov/
-
-# Environment variables
-.env
-
-# Build
 build/
 dist/
 *.egg-info/
+
+# ==========================================================
+# Logs
+# ==========================================================
+
+*.log
+
+# ==========================================================
+# Operating system
+# ==========================================================
+
+.DS_Store
+Thumbs.db
+
+# ==========================================================
+# Dataset
+# ==========================================================
+
+data/raw/
+data/TN5000*
+
+# Ignore processed images but keep metadata
+data/processed/cropped/
+
+# ==========================================================
+# Training outputs
+# ==========================================================
+
+checkpoints/
+checkpoints/epoch_*.pth
+checkpoints/last*.pth
+
+# ==========================================================
+# Evaluation outputs
+# ==========================================================
+
+results/*.csv
+results/*.json
+results/*.txt
+
+# Keep publication figures
+!results/confusion_matrix.png
+!results/roc_curve.png
+!results/precision_recall_curve.png
+
+# Keep Grad-CAM examples
+!results/gradcam/
+
+# ==========================================================
+# Hugging Face cache
+# ==========================================================
+
+.huggingface/
+
+.cache/
+
+# ==========================================================
+# MLflow (if used)
+# ==========================================================
+
+mlruns/

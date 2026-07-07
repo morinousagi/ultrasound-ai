@@ -1,13 +1,24 @@
-# Thyroid Ultrasound AI (In-progress)
+---
+title: Ultrasound Ai
+emoji: 📚
+colorFrom: indigo
+colorTo: red
+sdk: gradio
+app_file: app.py
+pinned: false
+---
+
+# AI Thyroid Ultrasound Classifier
 
 This project is completed collaboratively with **ChatGPT** through prompt engineering and AI-assisted coding.
 
-Explainable Thyroid Nodule Classification using Lesion-Centric Deep Learning.
-
 An AI-assisted thyroid nodule classification from ultrasound images using EfficientNet with Grad-CAM explainability and Hugging Face deployment.
 
+- Model was trained using lesion-centered regions extracted from expert annotations.
+- Demo accepts full ultrasound images for educational and research demonstration only.
+- Not intended for clinical use.
 
-Demo app deployment: [Hugging Face link]()
+Demo app deployment: [Hugging Face link](https://huggingface.co/spaces/morinousagi/ultrasound-ai)
 
 ## Ultrasound Dataset
 
@@ -28,7 +39,7 @@ Class imbalance:
 
 ## Preprocessing & Augmentation
 
-`prepare_dataset.py`
+`preprocess.py`
 - Expands bounding boxes by 15%
 - Crops each nodule ROI, saves cropped images to a new directory
 - Generates train/validation/test splits
@@ -105,49 +116,95 @@ Early stopping triggered.
 
 Training complete.
 Best validation F1: 0.8653
-
 ```
 
 
 ## Evaluation
 
-- Because missing malignant nodules is undesirable in screening applications, `recall` is emphasized alongside F1-score during model evaluation.
+Missing malignant nodules is undesirable in screening applications, `recall` is emphasized alongside F1-score during model evaluation.
 
+`evaluate.py`
+- Load best_model.pth
+- Evaluate on the test split (1000 images)
+```
+==============================
+Evaluation Results
+==============================
+accuracy    : 0.8290
+precision   : 0.8931
+recall      : 0.8643
+f1_score    : 0.8785
+roc_auc     : 0.8813
+
+Saved predictions.csv
+
+Saved classification_report.txt
+Saved confusion_matrix.png
+Saved roc_curve.png
+Saved precision_recall_curve.png
+
+============================================================
+Evaluation Summary
+============================================================
+Accuracy : 0.8290
+Precision: 0.8931
+Recall   : 0.8643
+F1 Score : 0.8785
+ROC AUC  : 0.8813
+
+Confusion Matrix
+[[211  74]
+ [ 97 618]]
+
+Classification Report
+              precision    recall  f1-score   support
+
+      Benign     0.6851    0.7404    0.7116       285
+   Malignant     0.8931    0.8643    0.8785       715
+
+    accuracy                         0.8290      1000
+   macro avg     0.7891    0.8023    0.7951      1000
+weighted avg     0.8338    0.8290    0.8309      1000
+```
 
 ## Grad-CAM Visualization
 
-
-## Demo App
+`gradcam.py`
+1. Loads the trained model.
+2. Reads predictions.csv produced by evaluate.py.
+3. Selects representative examples and computes Grad-CAM heatmaps.
+5. Saves overlay visualizations to `results/gradcam/`
 
 
 ## Files
 ```
 ultrasound-ai/
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── splits/
+├── app.py                  
+├── requirements.txt
+├── README.md
+├── config.yaml
+│
+├── checkpoints/
+│   └── best_model.pth     # Available in HF
 │
 ├── src/
-│   ├── dataset.py
 │   ├── preprocess.py
+│   ├── dataset.py
 │   ├── train.py
 │   ├── evaluate.py
-│   ├── inference.py
 │   ├── gradcam.py
 │   └── utils.py
 │
-├── models/
-│
 ├── results/
-│   ├── figures/
-│   ├── metrics/
-│   └── predictions/
+│   ├── confusion_matrix.png
+│   ├── roc_curve.png
+│   ├── precision_recall_curve.png
+│   └── gradcam/
 │
-├── app.py
-├── requirements.txt
-├── README.md
-└── LICENSE
+├── data/
+│   └── processed/
+│       └── metadata.csv
+
 ```
 
 ## ENV
