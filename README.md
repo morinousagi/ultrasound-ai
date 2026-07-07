@@ -126,6 +126,7 @@ Missing malignant nodules is undesirable in screening applications, `recall` is 
 `evaluate.py`
 - Load best_model.pth
 - Evaluate on the test split (1000 images)
+
 ```
 ==============================
 Evaluation Results
@@ -167,18 +168,19 @@ Classification Report
 weighted avg     0.8338    0.8290    0.8309      1000
 ```
 
+
 ## Grad-CAM Visualization
 
 `gradcam.py`
-1. Loads the trained model.
-2. Reads predictions.csv produced by evaluate.py.
-3. Selects representative examples and computes Grad-CAM heatmaps.
-5. Saves overlay visualizations to `results/gradcam/`
+- Loads the trained model.
+- Reads predictions.csv produced by evaluate.py.
+- Selects representative examples and computes Grad-CAM heatmaps.
+- Saves overlay visualizations to `results/gradcam/`
 
 
 ## Files
 ```
-ultrasound-ai/
+/
 ├── app.py                  
 ├── requirements.txt
 ├── README.md
@@ -206,6 +208,7 @@ ultrasound-ai/
 │       └── metadata.csv
 
 ```
+
 
 ## Future Improvements
 
