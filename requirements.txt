@@ -7,7 +7,7 @@ pandas
 scikit-learn
 matplotlib
 
-opencv-python
+opencv-python-headless
 Pillow
 
 lxml
