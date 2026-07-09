@@ -218,3 +218,12 @@ This project focuses on building an end-to-end deep learning pipeline for thyroi
 * **Nodule localization:** Integrate an object detection or segmentation model (e.g., YOLO or U-Net) to identify the thyroid nodule before classification, removing the reliance on lesion-centered crops.
 * **Threshold optimization:** Tune the decision threshold to prioritize sensitivity (recall) for screening-oriented applications, reducing missed malignant cases.
 * **Model comparison:** Benchmark multiple architectures (e.g., EfficientNet, ConvNeXt, Vision Transformer) to evaluate the trade-offs between accuracy, inference speed, and computational cost.
+
+
+## Demo App
+
+👉 [Hugging Face link](https://huggingface.co/spaces/morinousagi/ultrasound-ai)
+
+UI snapshot:
+
+![alt text](app_ui.png)
